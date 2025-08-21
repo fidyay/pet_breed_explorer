@@ -1,4 +1,2 @@
-"use server";
-
-export * from "./getRandomCatsBreeds";
-export * from "./getRandomDogsBreeds";
+export { default as getRandomCatsBreeds } from "./getRandomCatsBreeds";
+export { default as getRandomDogsBreeds } from "./getRandomDogsBreeds";

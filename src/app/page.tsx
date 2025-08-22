@@ -4,6 +4,7 @@ import {
   getRandomDogsBreeds,
   getRandomCatsBreeds,
 } from "@/lib/functions/server";
+import { HomePageView } from "@/lib/views";
 import { connection } from "next/server";
 
 export default async function Home() {
@@ -15,12 +16,5 @@ export default async function Home() {
     getRandomDogsBreeds(),
   ]);
 
-  return (
-    <div>
-      <h1>Cats</h1>
-      <p>{JSON.stringify(catsBreeds)}</p>
-      <h1>Dogs</h1>
-      <p>{JSON.stringify(dogsBreeds)}</p>
-    </div>
-  );
+  return <HomePageView catsBreeds={catsBreeds} dogsBreeds={dogsBreeds} />;
 }

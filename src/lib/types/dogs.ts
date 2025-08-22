@@ -11,3 +11,11 @@ export type TDogBreed = {
   temperament: string;
   reference_image_id: string;
 };
+
+export type TDogBreedImgData = {
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+  breeds: TDogBreed[];
+};

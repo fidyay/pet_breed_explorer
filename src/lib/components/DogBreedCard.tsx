@@ -1,5 +1,4 @@
 import { TDogBreed } from "../types";
-import { clientEnvs } from "../utils/client";
 import { AnimalBreedCard } from "./AnimalBreedCard";
 
 type TProps = {
@@ -7,7 +6,7 @@ type TProps = {
 };
 
 export const DogBreedCard: React.FC<TProps> = ({ breed }) => {
-  const breedImgUrl = `${clientEnvs.NEXT_PUBLIC_DOGS_IMAGES_BASE_URL}/${breed.reference_image_id}.jpg`;
+  const breedImgUrl = `/api/dogs/images/${breed.reference_image_id}`;
 
   return (
     <AnimalBreedCard

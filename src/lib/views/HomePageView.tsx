@@ -9,7 +9,7 @@ type TProps = {
 
 export const HomePageView: React.FC<TProps> = ({ catsBreeds, dogsBreeds }) => {
   return (
-    <div className="p-6 flex flex-col gap-6">
+    <div className="sm:p-6 p-4 flex flex-col gap-6">
       <BreedsList title="Cats">
         {catsBreeds.map((breed) => (
           <CatBreedCard breed={breed} key={breed.id} />

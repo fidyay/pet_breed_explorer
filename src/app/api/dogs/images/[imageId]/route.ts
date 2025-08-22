@@ -15,7 +15,7 @@ export async function GET(
     `${serverEnvs.DOGS_API_BASE_URL}/images/${imageId}`,
     {
       headers: {
-        "x-api-key": serverEnvs.CATS_API_KEY,
+        "x-api-key": serverEnvs.DOGS_API_KEY,
       },
       cache: "force-cache",
       // refresh after 1 hour

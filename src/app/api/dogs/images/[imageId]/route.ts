@@ -1,8 +1,6 @@
 import { TDogBreedImgData } from "@/lib/types";
-import { serverEnvs } from "@/lib/utils/server";
+import { API_CACHE_TIME, serverEnvs } from "@/lib/utils/server";
 import { NextResponse } from "next/server";
-
-const MAX_IMAGE_CACHE_TIME = 3600;
 
 // for some reason dogs api does not include image url into dog breed data, so I made this proxy request to get it
 export async function GET(
@@ -17,10 +15,8 @@ export async function GET(
       headers: {
         "x-api-key": serverEnvs.DOGS_API_KEY,
       },
-      cache: "force-cache",
-      // refresh after 1 hour
       next: {
-        revalidate: MAX_IMAGE_CACHE_TIME,
+        revalidate: API_CACHE_TIME,
       },
     }
   );

@@ -15,7 +15,7 @@ export const AnimalBreedDetailed: React.FC<TProps> = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <BackButton href="/" className="self-start" />
+      <BackButton href="/" className="self-start mb-1" />
       <div className="flex justify-center">
         <BreedPhotosCarousel
           images={breed.images}

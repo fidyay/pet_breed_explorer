@@ -1,5 +1,4 @@
-import { BreedsList, CatBreedCard } from "../components";
-import { DogBreedCard } from "../components/DogBreedCard";
+import { BreedsList, CatBreedCard, DogBreedCard } from "../components";
 import { TCatBreed, TDogBreed } from "../types";
 
 type TProps = {

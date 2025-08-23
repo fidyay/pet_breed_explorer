@@ -1,5 +1,6 @@
 "use server";
 
+import { AnimalBreedDetailed } from "@/lib/components";
 import { getDogsBreedById } from "@/lib/functions/server";
 
 export default async function Page({
@@ -13,7 +14,5 @@ export default async function Page({
 
   const dogBreedData = await getDogsBreedById(dogBreedId);
 
-  console.log(dogBreedData);
-
-  return <div>{JSON.stringify(dogBreedData)}</div>;
+  return <AnimalBreedDetailed breed={dogBreedData} />;
 }

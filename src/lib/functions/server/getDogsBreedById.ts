@@ -1,12 +1,12 @@
 "use server";
 
-import { TDogBreed } from "@/lib/types";
+import { TDogBreed, TDogBreedWithImages } from "@/lib/types";
 import { API_CACHE_TIME, serverEnvs } from "@/lib/utils/server";
 
 // I did caching for 1 day so I'll optimize this query by using cache data and it will only run once per 24 hours
 export default async function getDogsBreedById(
   id: TDogBreed["id"]
-): Promise<TDogBreed> {
+): Promise<TDogBreedWithImages> {
   const [dataResp, imagesResp] = await Promise.all([
     fetch(`${serverEnvs.DOGS_API_BASE_URL}/breeds/${id}`, {
       headers: {
@@ -16,14 +16,17 @@ export default async function getDogsBreedById(
         revalidate: API_CACHE_TIME,
       },
     }),
-    fetch(`${serverEnvs.DOGS_API_BASE_URL}/images/search?breed_ids=${id}`, {
-      headers: {
-        "x-api-key": serverEnvs.DOGS_API_KEY,
-      },
-      next: {
-        revalidate: API_CACHE_TIME,
-      },
-    }),
+    fetch(
+      `${serverEnvs.DOGS_API_BASE_URL}/images/search?breed_ids=${id}&limit=25`,
+      {
+        headers: {
+          "x-api-key": serverEnvs.DOGS_API_KEY,
+        },
+        next: {
+          revalidate: API_CACHE_TIME,
+        },
+      }
+    ),
   ]);
 
   return { ...(await dataResp.json()), images: await imagesResp.json() };

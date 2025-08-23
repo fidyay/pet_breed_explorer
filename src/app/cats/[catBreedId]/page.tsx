@@ -1,5 +1,6 @@
 "use server";
 
+import { AnimalBreedDetailed } from "@/lib/components";
 import { getCatsBreedById } from "@/lib/functions/server";
 
 export default async function Page({
@@ -11,7 +12,5 @@ export default async function Page({
 
   const catBreedData = await getCatsBreedById(catBreedId);
 
-  console.log(catBreedData);
-
-  return <div>{JSON.stringify(catBreedData)}</div>;
+  return <AnimalBreedDetailed breed={catBreedData} />;
 }

@@ -1,0 +1,47 @@
+import * as React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./shadcn/carousel";
+import { Card, CardContent } from "./shadcn";
+import { TImage } from "../types";
+import NextImage from "next/image";
+
+type TProps = {
+  images: TImage[];
+};
+
+export const BreedPhotosCarousel: React.FC<TProps> = ({ images }) => {
+  return (
+    <Carousel
+      opts={{
+        loop: true,
+      }}
+      className="w-full max-w-xs"
+    >
+      <CarouselContent>
+        {images.map((image, index) => (
+          <CarouselItem key={image.id}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center relative">
+                  <NextImage
+                    className="object-cover"
+                    fill
+                    src={image.url}
+                    alt={`Breed image №${index + 1}`}
+                  />
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  );
+};

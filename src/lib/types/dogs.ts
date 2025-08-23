@@ -20,4 +20,4 @@ export type TDogBreedImgData = {
   breeds: TDogBreed[];
 };
 
-export type TDogBreedWithImages = TDogBreed & { images: TImage };
+export type TDogBreedWithImages = TDogBreed & { images: TImage[] };

@@ -49,4 +49,4 @@ export type TCatBreedImgData = {
   breeds: TCatBreed[];
 };
 
-export type TCatBreedWithImages = TCatBreed & { images: TImage };
+export type TCatBreedWithImages = TCatBreed & { images: TImage[] };

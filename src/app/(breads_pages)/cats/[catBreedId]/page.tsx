@@ -1,7 +1,7 @@
 "use server";
 
-import { AnimalBreedDetailed } from "@/lib/components";
 import { getCatsBreedById } from "@/lib/functions/server";
+import { AnimalBreedDetailedView } from "@/lib/views";
 
 export default async function Page({
   params,
@@ -13,7 +13,7 @@ export default async function Page({
   const catBreedData = await getCatsBreedById(catBreedId);
 
   return (
-    <AnimalBreedDetailed
+    <AnimalBreedDetailedView
       breed={catBreedData}
       emptyArrFallbackLink="/unknown_cat.png"
     />

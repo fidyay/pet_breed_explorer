@@ -1,23 +1,12 @@
 "use server";
 
 import { TDogBreed } from "@/lib/types";
-import {
-  API_CACHE_TIME,
-  MAX_BREEDS_TO_QUERY,
-  serverEnvs,
-} from "@/lib/utils/server";
+import { MAX_BREEDS_TO_QUERY } from "@/lib/utils/server";
 import { sampleSize } from "lodash";
+import fetchDogsApi from "./fetchDogsApi";
 
-// I did caching for 1 day so I'll optimize this query by using cache data and it will only run once per 24 hours
 export default async function getRandomDogsBreeds(): Promise<TDogBreed[]> {
-  const resp = await fetch(`${serverEnvs.DOGS_API_BASE_URL}/breeds`, {
-    headers: {
-      "x-api-key": serverEnvs.DOGS_API_KEY,
-    },
-    next: {
-      revalidate: API_CACHE_TIME,
-    },
-  });
+  const data = await fetchDogsApi<TDogBreed[]>("breeds");
 
-  return sampleSize(await resp.json(), MAX_BREEDS_TO_QUERY);
+  return sampleSize(data, MAX_BREEDS_TO_QUERY);
 }

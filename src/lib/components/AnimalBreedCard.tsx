@@ -1,4 +1,4 @@
-import { Button, Card, CardDescription, CardHeader, CardTitle } from "./shadcn";
+import { Card, CardDescription, CardHeader, CardTitle } from "./shadcn";
 import NextImage from "next/image";
 import NextLink from "next/link";
 

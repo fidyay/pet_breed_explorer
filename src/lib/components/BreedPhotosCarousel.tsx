@@ -1,12 +1,13 @@
 import * as React from "react";
 import {
+  Card,
+  CardContent,
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "./shadcn/carousel";
-import { Card, CardContent } from "./shadcn";
+} from "./shadcn";
 import { TImage } from "../types";
 import NextImage from "next/image";
 import { useMemo } from "react";

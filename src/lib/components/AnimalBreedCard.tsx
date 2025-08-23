@@ -16,7 +16,7 @@ export const AnimalBreedCard: React.FC<TProps> = ({
   readMoreLink,
 }) => {
   return (
-    <Card className="p-0 overflow-hidden sm:w-96 w-full hover:bg-accent hover:text-accent-foreground">
+    <Card className="p-0 overflow-hidden hover:bg-accent hover:text-accent-foreground">
       <NextLink href={readMoreLink} className="flex flex-col gap-6">
         <div className="relative h-64 w-full">
           <NextImage

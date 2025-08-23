@@ -35,23 +35,21 @@ export const BreedPhotosCarousel: React.FC<TProps> = ({
       opts={{
         loop: true,
       }}
-      className="w-full max-w-xs"
+      className="w-full max-w-md"
     >
       <CarouselContent>
         {imagesToUse.map((image, index) => (
           <CarouselItem key={image.id}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center relative">
-                  <NextImage
-                    className="object-cover"
-                    fill
-                    src={image.url}
-                    alt={`Breed image №${index + 1}`}
-                  />
-                </CardContent>
-              </Card>
-            </div>
+            <Card className="py-0 overflow-hidden">
+              <CardContent className="flex aspect-square items-center justify-center relative">
+                <NextImage
+                  className="object-cover"
+                  fill
+                  src={image.url}
+                  alt={`Breed image №${index + 1}`}
+                />
+              </CardContent>
+            </Card>
           </CarouselItem>
         ))}
       </CarouselContent>

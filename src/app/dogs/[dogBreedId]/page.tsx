@@ -14,5 +14,10 @@ export default async function Page({
 
   const dogBreedData = await getDogsBreedById(dogBreedId);
 
-  return <AnimalBreedDetailed breed={dogBreedData} />;
+  return (
+    <AnimalBreedDetailed
+      breed={dogBreedData}
+      emptyArrFallbackLink="/unknown_dog.png"
+    />
+  );
 }

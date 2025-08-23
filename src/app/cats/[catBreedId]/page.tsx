@@ -12,5 +12,10 @@ export default async function Page({
 
   const catBreedData = await getCatsBreedById(catBreedId);
 
-  return <AnimalBreedDetailed breed={catBreedData} />;
+  return (
+    <AnimalBreedDetailed
+      breed={catBreedData}
+      emptyArrFallbackLink="/unknown_cat.png"
+    />
+  );
 }

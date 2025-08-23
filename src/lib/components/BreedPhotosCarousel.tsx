@@ -9,12 +9,26 @@ import {
 import { Card, CardContent } from "./shadcn";
 import { TImage } from "../types";
 import NextImage from "next/image";
+import { useMemo } from "react";
 
 type TProps = {
   images: TImage[];
+  emptyArrFallbackLink: string;
 };
 
-export const BreedPhotosCarousel: React.FC<TProps> = ({ images }) => {
+export const BreedPhotosCarousel: React.FC<TProps> = ({
+  images,
+  emptyArrFallbackLink,
+}) => {
+  // in case there are no images for this breed just show fallback image
+  const imagesToUse: TImage[] = useMemo(() => {
+    if (images.length) {
+      return images;
+    } else {
+      return [{ height: 0, width: 0, id: "", url: emptyArrFallbackLink }];
+    }
+  }, [images, emptyArrFallbackLink]);
+
   return (
     <Carousel
       opts={{
@@ -23,7 +37,7 @@ export const BreedPhotosCarousel: React.FC<TProps> = ({ images }) => {
       className="w-full max-w-xs"
     >
       <CarouselContent>
-        {images.map((image, index) => (
+        {imagesToUse.map((image, index) => (
           <CarouselItem key={image.id}>
             <div className="p-1">
               <Card>

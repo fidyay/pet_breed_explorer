@@ -11,7 +11,7 @@ export const CatBreedCard: React.FC<TProps> = ({ breed }) => {
       breedName={breed.name}
       breedDescription={breed.temperament}
       readMoreLink={`/cats/${breed.id}`}
-      imgSrc={breed.image.url}
+      imgSrc={breed.image?.url ?? "/unknown_cat.png"}
     />
   );
 };

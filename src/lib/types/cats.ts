@@ -37,6 +37,16 @@ export type TCatBreed = {
   short_legs: number;
   wikipedia_url?: string;
   hypoallergenic: number;
-  reference_image_id: string;
-  image: TImage;
+  reference_image_id?: string;
+  image?: TImage;
 };
+
+export type TCatBreedImgData = {
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+  breeds: TCatBreed[];
+};
+
+export type TCatBreedWithImages = TCatBreed & { images: TImage[] };

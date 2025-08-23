@@ -6,7 +6,9 @@ type TProps = {
 };
 
 export const DogBreedCard: React.FC<TProps> = ({ breed }) => {
-  const breedImgUrl = `/api/dogs/images/${breed.reference_image_id}`;
+  const breedImgUrl = breed.reference_image_id
+    ? `/api/dogs/images/${breed.reference_image_id}`
+    : "/unknown_dog.png";
 
   return (
     <AnimalBreedCard

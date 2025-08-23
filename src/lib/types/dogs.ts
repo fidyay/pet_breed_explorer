@@ -1,4 +1,4 @@
-import { THeight, TWeight } from "./shared";
+import { THeight, TImage, TWeight } from "./shared";
 
 export type TDogBreed = {
   weight: TWeight;
@@ -19,3 +19,5 @@ export type TDogBreedImgData = {
   height: number;
   breeds: TDogBreed[];
 };
+
+export type TDogBreedWithImages = TDogBreed & { images: TImage };

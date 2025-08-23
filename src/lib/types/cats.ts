@@ -41,12 +41,12 @@ export type TCatBreed = {
   image?: TImage;
 };
 
-export type TSingleBreedData = {
+export type TCatBreedImgData = {
   id: string;
-  name: string;
-  weight: string;
-  height: string;
-  life_span: string;
-  bred_for: string;
-  breed_group: string;
+  url: string;
+  width: number;
+  height: number;
+  breeds: TCatBreed[];
 };
+
+export type TCatBreedWithImages = TCatBreed & { images: TImage };

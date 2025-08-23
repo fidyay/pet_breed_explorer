@@ -1,15 +1,14 @@
+import { BreedInfoSections, BreedPhotosCarousel } from "../components";
+import { BackButton } from "../components/BackButton";
+import { TypographyH1, TypographyP } from "../components/shadcn";
 import { TCatBreedWithImages, TDogBreedWithImages } from "../types";
-import { BackButton } from "./BackButton";
-import { BreedInfoSections } from "./BreedInfoSections";
-import { BreedPhotosCarousel } from "./BreedPhotosCarousel";
-import { TypographyH1, TypographyP } from "./shadcn";
 
 type TProps = {
   breed: TCatBreedWithImages | TDogBreedWithImages;
   emptyArrFallbackLink: string;
 };
 
-export const AnimalBreedDetailed: React.FC<TProps> = ({
+export const AnimalBreedDetailedView: React.FC<TProps> = ({
   breed,
   emptyArrFallbackLink,
 }) => {

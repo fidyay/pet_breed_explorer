@@ -1,5 +1,4 @@
-import { TDogBreedImgData } from "@/lib/types";
-import { API_CACHE_TIME, serverEnvs } from "@/lib/utils/server";
+import { getDogImageById } from "@/lib/functions/server";
 import { NextResponse } from "next/server";
 
 // for some reason dogs api does not include image url into dog breed data, so I made this proxy request to get it
@@ -9,19 +8,7 @@ export async function GET(
 ) {
   const { imageId } = await params;
 
-  const resp = await fetch(
-    `${serverEnvs.DOGS_API_BASE_URL}/images/${imageId}`,
-    {
-      headers: {
-        "x-api-key": serverEnvs.DOGS_API_KEY,
-      },
-      next: {
-        revalidate: API_CACHE_TIME,
-      },
-    }
-  );
-
-  const imgData: TDogBreedImgData = await resp.json();
+  const imgData = await getDogImageById(imageId);
 
   const upstreamResponse = await fetch(imgData.url);
 
